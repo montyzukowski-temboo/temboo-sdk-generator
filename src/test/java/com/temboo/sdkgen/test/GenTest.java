@@ -9,7 +9,7 @@ public class GenTest {
     public void testGen() throws Exception {
         SDKGenerator s = new SDKGenerator();
           s.generateCode(GenTest.class.getResource("/test.stg"),
-          "JSONMetadataChoreography",
+          "Code",
           GenTest.class.getResourceAsStream("/tmb-monty-perftest.json"));
     }
 }

@@ -8,5 +8,5 @@ To Do:
   [x] read JSON file
   [x] read .st file
   [x] write JSON driver for ST
-  [] add JSON data for SDK
+  [x] add JSON data for SDK
   [] add sample .st file

@@ -1,3 +1,16 @@
 {
-  "org":"tmb-monty-perftest"
+  "user": {
+    "org":"tmb-mz1",
+    "name":"myFirstApp",
+    "plaintextPassword":"PASSWORD"
+  }, 
+  "version":"1.82",
+  "presetName":"",
+  "unmangledPath":["Library", "DuckDuckGo", "Query"],
+  "mangledParentPath":["Library", "DuckDuckGo"],
+  "choreoName":"Query",
+  "choreoDescription":"Access DuckDuckGo web search functionality.  ",
+  "instanceName":"query",
+  "org":"",
+
 }
