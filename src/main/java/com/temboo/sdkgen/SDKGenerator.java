@@ -19,11 +19,18 @@ public class SDKGenerator {
     Map<String, Object> attrs = st.getAttributes();
     for (String key:attrs.keySet()) {
       if (json.has(key)) {
-        st.add(key, json.get(key));
+        Object value = json.get(key);
+        if (value instanceof String) {
+          if (((String) value).length() == 0) {
+            value = null;
+          }
+        }
+        if (value != null) {
+          st.add(key, value);
+        }
       }
     }
 
-    System.out.println(json.toString());
     System.out.println(st.render());
     return st.toString();
   }
