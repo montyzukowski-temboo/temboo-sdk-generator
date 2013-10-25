@@ -5,7 +5,7 @@
     "plaintextPassword":"PASSWORD"
   }, 
   "version":"1.82",
-  "presetName":"",
+  "presetName":"preset1",
   "unmangledPath":["Library", "DuckDuckGo", "Query"],
   "mangledParentPath":["Library", "DuckDuckGo"],
   "choreoName":"Query",
@@ -28,7 +28,7 @@
     "NoHTML":"",
     "NoRedirect":"",
     "PrettyPrint":"",
-    "Query":"",
+    "Query":"temboolean",
     "SkipDisambiguation":""
   },
   "outputFilters": {

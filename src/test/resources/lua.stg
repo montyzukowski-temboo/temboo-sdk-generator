@@ -13,7 +13,7 @@ dom_header = 'x-temboo-domain: /$orgOrDefault(user)$/master'
 content_header = 'Content-Type: application/json'
 accept_header = 'Accept: application/json'
 
-data = '{"inputs":[$userInputs.keys:{key | {"name":"$key$","value":userInputs.(key)};separator=","$]$if(presetName)$,"preset" = $presetName$$endif$}'
+data = '{"inputs":[$userInputs.keys:{key | {"name":"$key$","value":userInputs.($key$)};separator=","$]$if(presetName)$,"preset" = $presetName$$endif$}'
 
 headers = {}
 headers[0] = dom_header
