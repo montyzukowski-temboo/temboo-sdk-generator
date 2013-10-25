@@ -1,4 +1,4 @@
- group sdk-json-metadata;
+group sdk-json-metadata;
 
 
 Code(inputs, outputs, presetName, org, choreoName, choreoDescription, mangledParentPath, instanceName, unmangledPath)::=<<
@@ -9,7 +9,7 @@ curl = require('curl')
 
 url = 'https://$orgOrDefault(user)$.temboolive.com/temboo-api/1.0/choreos/$unmangledPath:{seg |$seg$};separator="/"$'
 auth = 'APP_KEY_NAME:APP_KEY_VALUE'
-dom_header = 'x-temboo-domain: /$(orgOrDefault(user)/master'
+dom_header = 'x-temboo-domain: /$orgOrDefault(user)$/master'
 content_header = 'Content-Type: application/json'
 accept_header = 'Accept: application/json'
 

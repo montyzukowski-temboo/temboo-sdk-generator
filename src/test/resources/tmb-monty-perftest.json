@@ -12,5 +12,25 @@
   "choreoDescription":"Access DuckDuckGo web search functionality.  ",
   "instanceName":"query",
   "org":"",
-
+  "inputs": {
+    "Format":{"description":"(optional, string) Enter: xml, or json.  Default is set to xml.", "sdkName":"Format", "annotations":["optional", "string"]},
+    "NoHTML":{"description":"(optional, integer) Enter 1 to remove HTML from text. Set only if Format=json.", "sdkName":"NoHTML", "annotations":["optional", "integer"]},
+    "NoRedirect":{"description":"(optional, integer) Enter 1 to skip HTTP redirects.  This is useful for !bang commands. Set only if Format=json.", "sdkName":"NoRedirect", "annotations":["optional", "integer"]},
+    "PrettyPrint":{"description":"(optional, integer) Enter 1 to pretty-print the JSON output.", "sdkName":"PrettyPrint", "annotations":["optional", "integer"]},
+    "Query":{"description":"(required, string) Enter a search query.", "sdkName":"Query", "annotations":["required", "string"]},
+    "SkipDisambiguation":{"description":"(optional, integer) Enter 1 to skip disambiguation. Set only if Format=json.", "sdkName":"SkipDisambiguation", "annotations":["optional", "integer"]}
+  },
+  "outputs": {
+    "Response":{"description":"The response from DuckDuckGo in XML or JSON format.", "sdkName":"Response", "annotations":[]}
+  },
+  "userInputs": {
+    "Format":"",
+    "NoHTML":"",
+    "NoRedirect":"",
+    "PrettyPrint":"",
+    "Query":"",
+    "SkipDisambiguation":""
+  },
+  "outputFilters": {
+  }
 }
