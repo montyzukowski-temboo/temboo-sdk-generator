@@ -1,0 +1,69 @@
+ group sdk-json-metadata;
+
+
+JSONMetadataChoreography(inputs, outputs, presetName, org, choreoName, choreoDescription, mangledParentPath, instanceName, unmangledPath, ecoImports)::=<<
+{
+ $if(user)$"user":{
+    "org":"$user.URI.orgName$",
+    "name":"$user.name$",
+    "plaintextPassword":"$user.plaintextPassword$"
+  } ,$endif$
+  "presetName":"$presetName$", 
+  "unmangledPath":[$unmangledPath:{p | "$p$"};separator=", "$],
+  "mangledParentPath":[$mangledParentPath:{p | "$p$"};separator=", "$],
+  "choreoName":"$choreoName$",
+  "choreoDescription":"$choreoDescription$",
+  "instanceName":"$instanceName$",
+  "org":"$org$",
+  "inputs": {
+    $userInputs.keys:{key | "$key$":"$value$"};separator=",\n"$
+  }
+  "outputs": {
+    $userInputs.keys:{key | "$key$":"$value$"};separator=",\n"$
+  }
+  "ecoImports": {
+  $outputFilters:{filter | $outputFilter(filter)$};separator=",\n"$
+  }
+}
+
+>>
+
+JSONMetadataSnippet(inputs, outputs, presetName, org, choreoName, choreoDescription, mangledParentPath, unmangledPath, instanceName, userInputs, user, outputFilters)::=<<
+{
+ $if(user)$"user":{
+    "org":"$user.URI.orgName$",
+    "name":"$user.name$",
+    "plaintextPassword":"$user.plaintextPassword$"
+  } ,$endif$
+  "presetName":"$presetName$", 
+  "unmangledPath":[$unmangledPath:{p | "$p$"};separator=", "$],
+  "choreoName":"$choreoName$",
+  "userInputs": {
+    $userInputs.keys:{key | "$key$":"$value$"};separator=",\n"$
+  }
+  "outputFilters": {
+  $outputFilters:{filter | $outputFilter(filter)$};separator=",\n"$
+  }
+}
+
+>>
+
+outputFilter(filter)::=<<
+  {"name":"$filter.name$", "path":"$filter.path$", "variable":"$filter.variable$"}
+>>
+
+StringLiteral(var)::=<<
+$var.string$
+>>
+
+orgOrDefault(user)::=<<
+$if(user)$$user.org$$else$ACCOUNT_NAME$endif$
+>>
+
+appKeyNameOrDefault(user)::=<<
+$if(user)$$user.name$$else$APP_KEY_NAME$endif$
+>>
+
+appKeyOrDefault(user)::=<<
+$if(user)$$user.plaintextPassword$$else$APP_KEY$endif$
+>>

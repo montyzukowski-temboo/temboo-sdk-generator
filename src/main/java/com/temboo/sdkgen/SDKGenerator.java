@@ -2,25 +2,25 @@ package com.temboo.sdkgen;
 
 import java.io.InputStream;
 import java.io.IOException;
+import java.net.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.stringtemplate.v4.*;
 
 public class SDKGenerator {
 
-  public static String generateCode(String templatePath, InputStream jsonStream) 
+  public static String generateCode(URL templatePath, InputStream jsonStream) 
       throws IOException, JSONException {
     JSONObject json = new JSONObject(new JSONTokener(jsonStream));
-    System.out.println(templatePath);
+    STGroup test = new STGroupFile(templatePath, "UTF-8", '<', '>');
     System.out.println(json.toString());
+    System.out.println(test.toString());
     return json.toString();
   }
 
   public static void main(String[] args) {
-    String templatePath=args[1];
-    String jsonPath=args[2];
-    System.out.println(templatePath);
-    System.out.println(jsonPath);
+    
   }
 
 }
