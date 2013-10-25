@@ -6,19 +6,14 @@ Code(inputs, outputs, presetName, org, choreoName, choreoDescription, mangledPar
 #!/usr/bin/lua
 
 curl = require('curl')
-json = require('json')
 
 url = 'https://$orgOrDefault(user)$.temboolive.com/temboo-api/1.0/choreos/$unmangledPath:{seg |$seg$};separator="/"$'
 auth = 'APP_KEY_NAME:APP_KEY_VALUE'
 dom_header = 'x-temboo-domain: /$(orgOrDefault(user)/master'
 content_header = 'Content-Type: application/json'
 accept_header = 'Accept: application/json'
-inputs = {}
-$userInputs.keys:{key | inputs[key]=userInputs.(key)};separator="\n"$
-data = {}
-data['inputs'] = inputs
-$if(presetName)$data['preset'] = $presetName$$endif$
-json_data = json.encode(data)
+
+data = '{"inputs":[$userInputs.keys:{key | {"name":"key","value":userInputs.(key)};separator=","$]$if(presetName),"preset" = $presetName$$endif$}'
 
 headers = {}
 headers[0] = dom_header
@@ -31,7 +26,7 @@ req:setopt(curl.OPT_HTTPAUTH, curl.AUTH_BASIC)
 req:setopt(curl.OPT_USERPWD, auth)
 req:setopt(curl.OPT_HTTPHEADER, headers)
 req:setopt(curl.OPT_CUSTOMREQUEST, 'POST')
-req:setopt(curl.OPT_POSTFIELDS, json_data)
+req:setopt(curl.OPT_POSTFIELDS, data)
 
 print(req:perform())
 
