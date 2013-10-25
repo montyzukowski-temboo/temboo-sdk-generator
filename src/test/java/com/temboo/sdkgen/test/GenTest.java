@@ -8,7 +8,7 @@ public class GenTest {
     @Test
     public void testGen() throws Exception {
         SDKGenerator s = new SDKGenerator();
-          s.generateCode(GenTest.class.getResource("/test.stg"),
+          s.generateCode(GenTest.class.getResource("/lua.stg"),
           "Code",
           GenTest.class.getResourceAsStream("/tmb-monty-perftest.json"));
     }
